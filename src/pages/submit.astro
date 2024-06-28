@@ -1,0 +1,119 @@
+---
+import Layout from '../components/layout.astro';
+---
+
+<style>
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 35ch;
+}
+
+.form label {
+  color: var(--heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.form label:first-of-type {
+  margin-top: 0;
+}
+
+.form input,
+.form textarea {
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.form textarea {
+  height: 100px;
+}
+
+.button {
+  margin-top:1rem;
+  border:none;
+}
+
+
+.heading,
+.docs {
+  text-align: center;
+}
+
+.sighting {
+  border: 1px solid black;
+  padding: 0 1rem;
+}
+
+img{
+  max-width:250px;
+}
+</style>
+
+<Layout
+  title="Frame 352"
+  home
+>
+  <script is:inline>     
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('#blah')
+                  .attr('src', e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+  <main>
+
+    <form
+      class="form"
+      method="POST"
+      name="sightings"
+      action="/success"
+    >
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" />
+
+      <label for="conclusion">Conclusion</label>
+      <textarea name="conclusion"></textarea>
+
+      <section id="sightings" class="sighting-wrapper">
+        <h3>Sightings</h3>
+
+        <div class="sighting" id="sighting-1">
+          <p>#1</p>
+          <img id="blah" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
+          <input type="file" id="file" name="file" onchange="readURL(this)"/><br>
+
+          <label for="date">Date</label><br>
+          <input type="datetime-local" id="date" name="date"/><br>
+
+          <label for="notes">Notes</label><br>
+          <textarea name="notes"></textarea>
+        </div>
+
+        <input class="add_btn" id="add_btn" type="button" value="Add Sighting">
+      </section>
+ 
+      <label><input type="checkbox" id="consent" name="consent"/> I consent to have my sightings published by Maxwell Lander.</label>
+      
+      <button type="submit" class="button">
+        Submit
+      </button>
+    </form>
+
+  </main>
+</Layout>
