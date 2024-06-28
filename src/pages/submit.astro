@@ -94,7 +94,7 @@ img{
       <section id="sightings" class="sighting-wrapper">
         <h3>Sightings</h3>
 
-        <div class="sighting" id="sighting-1">
+        <fieldset class="sighting" id="sighting-1">
           <p>#1</p>
           <img id="blah" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
           <input type="file" id="file" name="file" onchange="readURL(this)"/><br>
@@ -104,7 +104,19 @@ img{
 
           <label for="notes">Notes</label><br>
           <textarea name="notes"></textarea>
-        </div>
+        </fieldset>
+
+        <fieldset class="sighting" id="sighting-2">
+          <p>#1</p>
+          <img id="blah" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
+          <input type="file" id="file" name="file" onchange="readURL(this)"/><br>
+
+          <label for="date">Date</label><br>
+          <input type="datetime-local" id="date" name="date"/><br>
+
+          <label for="notes">Notes</label><br>
+          <textarea name="notes"></textarea>
+        </fieldset>
 
         <input class="add_btn" id="add_btn" type="button" value="Add Sighting">
       </section>
