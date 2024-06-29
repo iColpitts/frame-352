@@ -3,7 +3,6 @@
       class="form"
       method="POST"
       name="sightings"
-      onchange="logSubmit()"
       id="form"
       netlify
     >
@@ -16,7 +15,7 @@
     <div v-for="index in count" :key="index">
         <section class="sighting" :id="`sighting-${ index }`">
           <p>#{{ index }}</p>
-          <img id="blah" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
+          <img :id="`img_file_${index}`" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
           <input type="file" :id="`file_${ index }`" :name="`file_${ index }`" v-on:change="readURL"/><br>
 
           <label :for="`date_${index}`">Date</label><br>
@@ -50,12 +49,16 @@ export default {
   methods: {
     readURL(e) {
       const input = e.target
+      const imgID=`#img_${input.id}`
         if (input.files && input.files[0]) {
           var reader = new FileReader();
+          console.log(imgID)
+
+          const image =  document.querySelector(imgID)
+          console.log(image)
 
           reader.onload = function (e) {
-              $('#blah')
-                  .attr('src', e.target.result);
+            image.src = e.target.result
           };
 
           reader.readAsDataURL(input.files[0]);
