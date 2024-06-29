@@ -1,19 +1,6 @@
 <template>
-    <form
-      class="form"
-      method="POST"
-      name="sightings-vue"
-      action="/submit"
-      id="form"
-      netlify
-    >
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" />
-
-      <label for="conclusion">Conclusion</label>
-      <textarea name="conclusion"></textarea>
-
-      <div v-for="index in maxSightings" :key="index">
+      <div>
+        <div v-for="index in maxSightings" :key="index">
           <section v-show="count >= index" class="sighting" :id="`sighting-${ index }`">
             <p>#{{ index }}</p>
             <img :id="`img_file_${index}`" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
@@ -28,11 +15,9 @@
       </div>
       <input v-if="count < maxSightings.length" type="button" @click="addSighting" value="Add Sighting" />
       <label><input type="checkbox" id="consent" name="consent"/> I consent to have my sightings published by Maxwell Lander.</label>
-          
-      <button type="submit" class="button">
-        Submit
-      </button>
-    </form>
+      <!-- help the netlify bots -->
+      <!-- <input type="hidden" name="form-name" value="sightings-vue" /> -->
+      </div>
 </template>
 
 <script>

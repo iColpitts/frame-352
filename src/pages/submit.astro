@@ -1,8 +1,6 @@
 ---
 import Layout from '../components/layout.astro';
 import SightingsForm from '../components/sighting-form.vue';
-
-var count = [1]
 ---
 
 <style>
@@ -13,22 +11,24 @@ var count = [1]
   title="Frame 352"
   home
 >
-  <script define:vars={count}> 
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-              $('#blah')
-                  .attr('src', e.target.result);
-          };
-
-          reader.readAsDataURL(input.files[0]);
-      }
-    }
-  </script>
-
   <main>
+    <form
+    class="form"
+    method="POST"
+    name="submit-sightings"
+    action="/submit"
+    id="form"
+    netlify
+  >
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+
+    <label for="conclusion">Conclusion</label>
+    <textarea name="conclusion"></textarea>
     <SightingsForm client:load/>
+    <button type="submit" class="button">
+      Submit
+    </button>
+  </form>
   </main>
 </Layout>
