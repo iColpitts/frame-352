@@ -3,7 +3,6 @@
       class="form"
       method="POST"
       name="sightings-vue"
-      action="/success"
       id="form"
       netlify
     >
@@ -13,22 +12,22 @@
       <label for="conclusion">Conclusion</label>
       <textarea name="conclusion"></textarea>
 
-    <div v-for="index in count" :key="index">
-        <section class="sighting" :id="`sighting-${ index }`">
-          <p>#{{ index }}</p>
-          <img :id="`img_file_${index}`" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
-          <input type="file" :id="`file_${ index }`" :name="`file_${ index }`" v-on:change="readURL"/><br>
+      <div v-for="index in count" :key="index">
+          <section class="sighting" :id="`sighting-${ index }`">
+            <p>#{{ index }}</p>
+            <img :id="`img_file_${index}`" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
+            <input type="file" :id="`file_${ index }`" :name="`file_${ index }`" v-on:change="readURL"/><br>
 
-          <label :for="`date_${index}`">Date</label><br>
-          <input type="datetime-local" :id="`date-${index}`" :name="`date-${index}`"/><br>
+            <label :for="`date_${index}`">Date</label><br>
+            <input type="datetime-local" :id="`date-${index}`" :name="`date-${index}`"/><br>
 
-          <label :for="`notes_${index}`">Notes</label><br>
-          <textarea :name="`notes_${index}`"></textarea>
-        </section>
-    </div>
-  <input v-if="count.length < 5" type="button" @click="addSighting" value="Add Sighting" />
-  <label><input type="checkbox" id="consent" name="consent"/> I consent to have my sightings published by Maxwell Lander.</label>
-      
+            <label :for="`notes_${index}`">Notes</label><br>
+            <textarea :name="`notes_${index}`"></textarea>
+          </section>
+      </div>
+      <input v-if="count.length < 5" type="button" @click="addSighting" value="Add Sighting" />
+      <label><input type="checkbox" id="consent" name="consent"/> I consent to have my sightings published by Maxwell Lander.</label>
+          
       <button type="submit" class="button">
         Submit
       </button>
