@@ -3,6 +3,7 @@
       class="form"
       method="POST"
       name="sightings-vue"
+      action="/submit"
       id="form"
       netlify
     >
