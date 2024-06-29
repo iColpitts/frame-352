@@ -1,5 +1,18 @@
 ---
 import Layout from '../components/layout.astro';
+
+const api_key = import.meta.env.NETLIFY_API_KEY;
+const bearer = `Bearer ${api_key}`
+
+const data = await fetch("https://api.netlify.com/api/v1/forms/submit-sightings/submissions",
+  {
+    method: 'POST',
+    headers: {'Content-Type':'application/json', 'Authorization': bearer},
+  })
+    .then((response) => { return response})
+    .catch((err) => {return err});
+
+// const data = json.data;
 ---
 
 <style>
@@ -53,7 +66,9 @@ import Layout from '../components/layout.astro';
   home
 >
   <main class="steps">
-
+    {api_key}
+    {bearer}
+    {data}
     <section class="step">
       <h2 class="stepHeading">Add your Sightings</h2>
       <p>
