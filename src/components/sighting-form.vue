@@ -16,8 +16,8 @@
     <div v-for="index in count" :key="index">
         <section class="sighting" :id="`sighting-${ index }`">
           <p>#{{ index }}</p>
-          <!-- <img id="blah" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br> -->
-          <input type="file" :id="`file_${ index }`" :name="`file_${ index }`"/><br>
+          <img id="blah" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
+          <input type="file" :id="`file_${ index }`" :name="`file_${ index }`" v-on:change="readURL"/><br>
 
           <label :for="`date_${index}`">Date</label><br>
           <input type="datetime-local" :id="`date-${index}`" :name="`date-${index}`"/><br>
@@ -48,7 +48,8 @@ export default {
   //   },
   // },
   methods: {
-    readURL() {
+    readURL(e) {
+      const input = e.target
         if (input.files && input.files[0]) {
           var reader = new FileReader();
 
