@@ -3,6 +3,7 @@
       class="form"
       method="POST"
       name="sightings"
+      action="/success"
       id="form"
       netlify
     >
