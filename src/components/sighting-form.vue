@@ -2,7 +2,7 @@
     <form
       class="form"
       method="POST"
-      name="sightings"
+      name="sightings-vue"
       action="/success"
       id="form"
       netlify
