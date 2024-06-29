@@ -26,7 +26,7 @@
           <textarea :name="`notes_${index}`"></textarea>
         </section>
     </div>
-  <input type="button" @click="addSighting" value="Add Sighting" />
+  <input v-if="count.length < 5" type="button" @click="addSighting" value="Add Sighting" />
   <label><input type="checkbox" id="consent" name="consent"/> I consent to have my sightings published by Maxwell Lander.</label>
       
       <button type="submit" class="button">
