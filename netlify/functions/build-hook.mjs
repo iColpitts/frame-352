@@ -15,7 +15,7 @@ const rebuildSite = async triggerTitle => {
   
   // Always update your footer every year! :)
   export default async request => {
-    await rebuildSite("daily rebuild to update footer")
+    await rebuildSite("daily rebuild to capture form submissions")
   }
   
   // Netlify scheduled function cron syntax
