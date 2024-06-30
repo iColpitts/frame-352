@@ -33,11 +33,13 @@ try {
   if (data.length > 0) {
     for(let i=0; i<data.length; i++){
       let obj = data[i].data
-      if (obj.file_1 != '') createSightingObject(obj.file_1, obj.date_1, obj.notes_1)
-      if (obj.file_2 != '') createSightingObject(obj.file_2, obj.date_2, obj.notes_2)
-      if (obj.file_3 != '') createSightingObject(obj.file_3, obj.date_3, obj.notes_3)
-      if (obj.file_4 != '') createSightingObject(obj.file_4, obj.date_4, obj.notes_4)
-      if (obj.file_5 != '') createSightingObject(obj.file_5, obj.date_5, obj.notes_5)
+      if(obj.consent == 'on') {
+        if (obj.file_1 != '') createSightingObject(obj.file_1, obj.date_1, obj.notes_1)
+        if (obj.file_2 != '') createSightingObject(obj.file_2, obj.date_2, obj.notes_2)
+        if (obj.file_3 != '') createSightingObject(obj.file_3, obj.date_3, obj.notes_3)
+        if (obj.file_4 != '') createSightingObject(obj.file_4, obj.date_4, obj.notes_4)
+        if (obj.file_5 != '') createSightingObject(obj.file_5, obj.date_5, obj.notes_5)
+      }
     }
   }
 } catch {

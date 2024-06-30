@@ -46,7 +46,7 @@ img{
 
 .sighting {
   outline: 1px solid black;
-  padding: 2px;
+  padding: 0.5rem;
   max-width: 250px;
 }
 </style>
