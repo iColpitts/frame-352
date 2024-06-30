@@ -1,9 +1,9 @@
 <template>
-      <div>
-        <div v-for="index in maxSightings" :key="index">
-          <section v-show="count >= index" class="sighting" :id="`sighting-${ index }`">
-            <p>#{{ index }}</p>
-            <img :id="`img_file_${index}`" src="https://placehold.co/600x400/orange/white?text=upload+image" alt="your image" /> <br>
+      <div class="wrapper">
+        <div class="sightings-wrapper">
+          <section v-for="index in maxSightings" :key="index" v-show="count >= index" class="sighting" :id="`sighting-${ index }`">
+            <!-- <p>#{{ index }}</p> -->
+            <img :id="`img_file_${index}`" src="https://placehold.co/600x400/red/white?text=Evidence" alt="your image" /> <br>
             <input type="file" :id="`file_${ index }`" :name="`file_${ index }`" v-on:change="readURL"/><br>
 
             <label :for="`date_${index}`">Date</label><br>
@@ -12,9 +12,8 @@
             <label :for="`notes_${index}`">Notes</label><br>
             <textarea :name="`notes_${index}`"></textarea>
           </section>
-      </div>
-      <input v-if="count < maxSightings.length" type="button" @click="addSighting" value="Add Sighting" />
-      <label><input type="checkbox" id="consent" name="consent"/> I consent to have my sightings published by Maxwell Lander.</label>
+        </div>
+      <input class="button-secondary" v-if="count < maxSightings.length" type="button" @click="addSighting" value="Add Sighting" /><br>
       <!-- help the netlify bots -->
       <!-- <input type="hidden" name="form-name" value="sightings-vue" /> -->
       </div>
@@ -61,14 +60,34 @@ export default {
 </script>
 
 <style>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sightings-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sighting {
+  outline: 1px solid black;
+  padding: 2px;
+  margin: 1rem;
+  max-width: 250px;
+  width: 100%;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  width: 35ch;
+  width: 100%;
 }
 
-.form label {
+label {
   color: var(--heading);
   font-size: 0.625rem;
   font-weight: 600;
@@ -77,20 +96,21 @@ export default {
   text-transform: uppercase;
 }
 
-.form label:first-of-type {
+label:first-of-type {
   margin-top: 0;
 }
 
-.form input,
-.form textarea {
+input,
+textarea {
   color: var(--text);
   font-family: inherit;
   font-size: 1rem;
   margin-top: 0.25rem;
   padding: 0.25rem 0.5rem;
+  width: 100%;
 }
 
-.form textarea {
+textarea {
   height: 100px;
 }
 
@@ -99,19 +119,30 @@ export default {
   border:none;
 }
 
+.button-secondary {
+  max-width: 300px;
+  justify-self: center;
+  margin: auto;
+}
+
+.consent {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  max-width: 15px;
+}
+
 
 .heading,
 .docs {
   text-align: center;
 }
 
-.sighting {
-  border: 1px solid black;
-  padding: 0 1rem;
-}
-
 img{
   max-width:250px;
+  width: 100%;
 }
 </style>
 

@@ -86,7 +86,7 @@ const { title, description, home = false } = Astro.props;
       background: var(--light);
       margin-bottom: 2rem;
       margin-top: 3rem;
-      padding: 2rem max(5vw, 50vw - 60ch / 2);
+      padding: 2rem max(5vw, 50vw - 70ch / 2);
       width: 100vw;
       border-style: none;
     }
@@ -181,7 +181,8 @@ const { title, description, home = false } = Astro.props;
 <body>
   <header class="container">
     <h1 class="heading">{title}</h1>
-
+    <!-- <p>Findings from the wild</p> -->
+    <a href="https://maxwellander.itch.io/frame-352">Get the game</a>
     <p class="description">{description}</p>
 
     {home == true && (
