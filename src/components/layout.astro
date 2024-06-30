@@ -83,12 +83,13 @@ const { title, description, home = false } = Astro.props;
     }
 
     main {
-      background: var(--light);
       margin-bottom: 2rem;
       margin-top: 3rem;
       padding: 2rem max(5vw, 50vw - 70ch / 2);
       width: 100vw;
       border-style: none;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
     }
 
     .sr-only:not(:focus):not(:active) {
