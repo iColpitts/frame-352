@@ -2,17 +2,48 @@
 import Layout from '../components/layout.astro';
 
 const api_key = import.meta.env.NETLIFY_API_KEY;
+const site_id = import.meta.env.SITE_ID;
+const form_id = import.meta.env.FORM_ID;
 const bearer = `Bearer ${api_key}`
 
-const data = await fetch("https://api.netlify.com/api/v1/forms/submit-sightings/submissions",
-  {
-    method: 'POST',
-    headers: {'Content-Type':'application/json', 'Authorization': bearer},
-  })
-    .then((response) => { return response})
-    .catch((err) => {return err});
+let data = 'nothing'
+let sightings = []
 
-// const data = json.data;
+function createSightingObject(file, date, note) {
+  sightings.push(
+    {
+      'file' : file,
+      'date' : date,
+      'note' : note,
+    }
+  )
+}
+
+try {
+  const response = await fetch(`https://api.netlify.com/api/v1/forms/${form_id}/submissions`,
+  {
+    method: 'GET',
+    headers: {
+      'Authorization': bearer
+    },
+  })
+  data = await response.json()
+  
+  if (data.length > 0) {
+    for(let i=0; i<data.length; i++){
+      console.log(data[i].data)
+
+      let obj = data[i].data
+      if (obj.file_1 != '') createSightingObject(obj.file_1, obj.date_1, obj.notes_1)
+      if (obj.file_2 != '') createSightingObject(obj.file_2, obj.date_2, obj.notes_2)
+      if (obj.file_3 != '') createSightingObject(obj.file_3, obj.date_3, obj.notes_3)
+      if (obj.file_4 != '') createSightingObject(obj.file_4, obj.date_4, obj.notes_4)
+      if (obj.file_5 != '') createSightingObject(obj.file_5, obj.date_5, obj.notes_5)
+    }
+  }
+} catch {
+  data = 'error'
+}
 ---
 
 <style>
@@ -66,10 +97,8 @@ const data = await fetch("https://api.netlify.com/api/v1/forms/submit-sightings/
   home
 >
   <main class="steps">
-    {api_key}
-    {bearer}
-    {data}
-    <section class="step">
+    {JSON.stringify(sightings)}
+    <!-- <section class="step">
       <h2 class="stepHeading">Add your Sightings</h2>
       <p>
         <strong>Grow our evidence</strong>
@@ -78,6 +107,6 @@ const data = await fetch("https://api.netlify.com/api/v1/forms/submit-sightings/
       Submit your sightings
       <span class="sr-only">about Netlify Functions</span>
       </a>
-    </section>
+    </section> -->
   </main>
 </Layout>

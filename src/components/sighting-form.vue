@@ -7,7 +7,7 @@
             <input type="file" :id="`file_${ index }`" :name="`file_${ index }`" v-on:change="readURL"/><br>
 
             <label :for="`date_${index}`">Date</label><br>
-            <input type="datetime-local" :id="`date-${index}`" :name="`date-${index}`"/><br>
+            <input type="datetime-local" :id="`date_${index}`" :name="`date_${index}`"/><br>
 
             <label :for="`notes_${index}`">Notes</label><br>
             <textarea :name="`notes_${index}`"></textarea>
