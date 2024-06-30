@@ -15,8 +15,9 @@
     "astro": "^4.0.0"
   },
   "dependencies": {
-    "netlify": "^13.1.20",
     "@astrojs/vue": "^4.5.0",
+    "@netlify/functions": "^2.8.0",
+    "netlify": "^13.1.20",
     "vue": "^3.4.31"
   }
 }
