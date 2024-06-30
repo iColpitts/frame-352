@@ -75,10 +75,11 @@ export default {
 
 .sighting {
   outline: 1px solid black;
-  padding: 2px;
+  padding: 0.5rem;
   margin: 1rem;
   max-width: 250px;
   width: 100%;
+  background-color: white;
 }
 
 .form {
