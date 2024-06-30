@@ -1,5 +1,6 @@
 <template>
   <div class="sightings-wrapper">
+    <p class="nothingness" v-if="sightings.length == 0">We have yet to record any sightings. Come back later to see if evidence has been submitted, to join the hunt grab a copy of <a href="https://maxwellander.itch.io/frame-352">Frame 352</a> on itch or submit your sightings <a href="/submit">here</a></p>
     <div v-for="sighting in sightings" class="sighting">
       <img :src="sighting.file.url"/>
       <p class="subtitle">{{ sighting.date }}</p>
@@ -24,6 +25,11 @@
 img{
   max-width:300px;
   width: 100%;
+}
+
+.nothingness {
+  text-align: center;
+  color: red;
 }
 
 .subtitle {
