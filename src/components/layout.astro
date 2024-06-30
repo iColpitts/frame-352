@@ -6,8 +6,9 @@ const { title, description, home = false } = Astro.props;
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="preload" href="/fonts/PacaembuVar-subset.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/MulishVar-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -37,8 +38,8 @@ const { title, description, home = false } = Astro.props;
       --light: var(--neutral-light-100);
       --white: var(--neutral-light-000);
       --card-radius: var(--border-radius-3);
-      --font-primary: Pacaembu, sans-serif;
-      --font-secondary: Mulish, sans-serif;
+      --font-primary: IBM Plex Mono, monospace;
+      --font-secondary: IBM Plex Mono, monospace;
 
     }
 
@@ -51,7 +52,7 @@ const { title, description, home = false } = Astro.props;
 
       color: var(--text);
       font-family: var(--font-secondary);
-      font-size: 18px;
+      font-size: 14px;
       line-height: 1.45;
       margin: 0;
       padding: 0;
@@ -182,6 +183,12 @@ const { title, description, home = false } = Astro.props;
     <h1 class="heading">{title}</h1>
 
     <p class="description">{description}</p>
+
+    {home == true && (
+      <p>
+        <a href="/submit">submit your sightings &rarr;</a>
+      </p>
+    )}
 
     {home !== true && (
       <p>

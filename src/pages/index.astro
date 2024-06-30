@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/layout.astro';
+import Sightings from '../components/sightings.vue';
 
 const api_key = import.meta.env.NETLIFY_API_KEY;
 const site_id = import.meta.env.SITE_ID;
@@ -31,8 +32,6 @@ try {
   
   if (data.length > 0) {
     for(let i=0; i<data.length; i++){
-      console.log(data[i].data)
-
       let obj = data[i].data
       if (obj.file_1 != '') createSightingObject(obj.file_1, obj.date_1, obj.notes_1)
       if (obj.file_2 != '') createSightingObject(obj.file_2, obj.date_2, obj.notes_2)
@@ -46,67 +45,13 @@ try {
 }
 ---
 
-<style>
-.steps {
-  background: var(--light);
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: min(90vw, 250px);
-  justify-content: center;
-  margin-top: 3rem;
-  padding: 5rem 5vw;
-  width: 100vw;
-}
-
-@media (min-width: 550px) {
-  .steps {
-    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
-  }
-}
-
-@media (min-width: 1050px) {
-  .steps {
-    grid-template-columns: repeat(4, min(calc(25% - 1.5rem), 250px));
-  }
-}
-
-.step {
-  background: var(--white);
-  border: 1px solid var(--lightBorder);
-  border-radius: var(--card-radius);
-  display: flex;
-  flex-direction: column;
-  font-size: 0.75rem;
-  padding: 1rem 1.5rem 1.5rem;
-  text-align: left;
-  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
-}
-
-.stepHeading {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-
-</style>
 
 <Layout
-  title="Netlify Feature Tour"
-  description="This is a small site to show the most powerful features of Netlify quickly!"
+  title="Bestiary 352"
+  description="Frame 352 is a solo photo journaling RPG where players collect photographic evidence of a cryptid in their region. Play involves walking (or skateboarding, wheelchairing, bicycling, rollerblading, canoeing, swimming, driving, or moving in a some way), taking photographs, and note taking, in response to the games central mechanic - a coin pull divination system."
   home
 >
   <main class="steps">
-    {JSON.stringify(sightings)}
-    <!-- <section class="step">
-      <h2 class="stepHeading">Add your Sightings</h2>
-      <p>
-        <strong>Grow our evidence</strong>
-      </p>
-      <a href="/submit" class="button">
-      Submit your sightings
-      <span class="sr-only">about Netlify Functions</span>
-      </a>
-    </section> -->
+    <Sightings sightings={sightings} />
   </main>
 </Layout>
